@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #111111;
+  --bg-secondary: #201F1D;
+  --text-primary: #F1EBDD;
+  --text-muted: #8E8981;
+  --text-muted-dark: #5A5650;
+  --accent-crimson: #B34A43;
+  --accent-crimson-light: #C75A53;
+  --border-subtle: rgba(241, 235, 221, 0.08);
+  --border-crimson: rgba(179, 74, 67, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Subtle Film Grain Overlay */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Crimson Duotone Filter Utility */
+.duotone-crimson {
+  filter: contrast(120%) brightness(95%);
+  mix-blend-mode: luminosity;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: var(--accent-crimson);
+  color: #F1EBDD;
+}
+
+::-moz-selection {
+  background-color: var(--accent-crimson);
+  color: #F1EBDD;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111111;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2825;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #B34A43;
+}
+
+/* Editorial Typography Utilities */
+.editorial-headline {
+  font-family: var(--font-cormorant), Georgia, serif;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+}
+
+.editorial-mono {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.editorial-rule {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(241, 235, 221, 0.15) 0%, rgba(179, 74, 67, 0.4) 50%, rgba(241, 235, 221, 0.05) 100%);
+}
+
+.editorial-badge {
+  font-family: var(--font-ibm-plex-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-crimson);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.editorial-badge::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: var(--accent-crimson);
+  border-radius: 50%;
+}
